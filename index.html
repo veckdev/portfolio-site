@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #efefef;
+            --card: #fff;
+            --border: rgba(0, 0, 0, 0.08);
+            --text: #111;
+            --muted: #888;
+            --faint: #bbb;
+            --red: #ff5f57;
+            --yellow: #febc2e;
+            --green: #28c840;
+            --shadow: 0 8px 40px rgba(0, 0, 0, .10), 0 2px 8px rgba(0, 0, 0, .06);
+            --shadow-up: 0 24px 64px rgba(0, 0, 0, .16), 0 4px 16px rgba(0, 0, 0, .08);
+            --w: 540px;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            font-family: 'Google Sans', sans-serif;
+            overflow: hidden
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50
+        }
+
+        .name-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(0, 0, 0, .08);
+            border-radius: 100px;
+            padding: 7px 20px;
+            font-size: 11px;
+            letter-spacing: .1em;
+            color: var(--muted)
+        }
+
+        .name-pill b {
+            color: var(--text);
+            font-weight: 500
+        }
+
+        .name-pill .dot {
+            color: #ccc
+        }
+
+        /* ── SCENE ── */
+        .scene {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1400px
+        }
+
+        .pile {
+            position: relative;
+            width: var(--w);
+            height: 380px
+        }
+
+        /* ── WINDOW ── */
+        .window {
+            position: absolute;
+            width: var(--w);
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transform-origin: center bottom;
+            bottom: 0;
+            overflow: hidden;
+            transition: transform .55s cubic-bezier(.34, 1.15, .64, 1), box-shadow .35s ease, opacity .45s ease;
+            will-change: transform;
+        }
+
+        .titlebar {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+            background: rgba(248, 248, 248, .9);
+            flex-shrink: 0
+        }
+
+        .stoplight {
+            display: flex;
+            gap: 6px
+        }
+
+        .stoplight span {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%
+        }
+
+        .stoplight span:nth-child(1) {
+            background: var(--red)
+        }
+
+        .stoplight span:nth-child(2) {
+            background: var(--yellow)
+        }
+
+        .stoplight span:nth-child(3) {
+            background: var(--green)
+        }
+
+        .urlbar {
+            flex: 1;
+            display: flex;
+            justify-content: center
+        }
+
+        .urlbar span {
+            background: rgba(0, 0, 0, .05);
+            border-radius: 100px;
+            padding: 4px 16px;
+            font-size: 12px;
+            color: var(--muted);
+            white-space: nowrap
+        }
+
+        .content {
+            padding: 28px 32px 36px
+        }
+
+        .content .tag {
+            font-family: "Google Sans Code", monospace;
+            font-size: 10px;
+            letter-spacing: .18em;
+            color: var(--faint);
+            margin-bottom: 8px
+        }
+
+        .content h2 {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 40px;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 12px
+        }
+
+        .content p {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.65;
+            max-width: 360px;
+            font-weight: 300
+        }
+
+        /* ── BACKDROP ── */
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(237, 233, 227, .55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .4s ease
+        }
+
+        .backdrop.on {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        /* ── PANEL (desktop: centered modal) ── */
+        .panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(.94);
+            width: min(680px, 92vw);
+            max-height: 82vh;
+            background: var(--card);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, .18);
+            z-index: 201;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform .45s cubic-bezier(.34, 1.15, .64, 1), opacity .35s ease;
+        }
+
+        .panel.on {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1)
+        }
+
+        .panel-bar {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, .07);
+            background: rgba(248, 248, 248, .92);
+            flex-shrink: 0
+        }
+
+        .x-btn {
+            background: var(--red);
+            border: none;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: filter .2s
+        }
+
+        .x-btn:hover {
+            filter: brightness(.8)
+        }
+
+        .panel-body {
+            padding: 40px 48px 52px;
+            overflow-y: auto;
+            flex: 1;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .panel-body .section {
+            font-family: 'Google Sans Code', monospace;
+            font-size: 10px;
+            letter-spacing: .2em;
+            color: var(--faint);
+            margin-bottom: 10px
+        }
+
+        .panel-body h1 {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 50px;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 16px
+        }
+
+        .panel-body .about {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 500px;
+            font-weight: 300;
+            margin-bottom: 36px
+        }
+
+        .sep {
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, .07);
+            margin-bottom: 32px
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .fact {
+            background: rgba(0, 0, 0, .025);
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 8px;
+            padding: 16px 18px
+        }
+
+        .fact .k {
+            font-family: 'Google Sans Code', monospace;
+            font-size: 10px;
+            letter-spacing: .15em;
+            color: var(--faint);
+            margin-bottom: 5px
+        }
+
+        .fact .v {
+            font-family: 'Google Sans Code', monospace;
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.4
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 28px
+        }
+
+        .chips span {
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        /* ── HINT ── */
+        .nudge {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            letter-spacing: .14em;
+            color: var(--faint);
+            z-index: 10;
+            white-space: nowrap;
+            animation: fade 4s ease 1.2s both
+        }
+
+        @keyframes fade {
+
+            0%,
+            100% {
+                opacity: 0
+            }
+
+            20%,
+            80% {
+                opacity: 1
+            }
+        }
+
+        /* ══════════════════════════════════
+   MOBILE  (max-width: 600px)
+   Stack becomes narrower, cards tighter.
+   Expanded panel slides up from bottom (sheet).
+   ══════════════════════════════════ */
+        @media (max-width: 600px) {
+            :root {
+                --w: calc(100vw - 32px)
+            }
+
+            .pile {
+                width: var(--w);
+                height: 320px
+            }
+
+            .window {
+                width: var(--w)
+            }
+
+            .titlebar {
+                height: 36px;
+                padding: 0 12px
+            }
+
+            .stoplight span {
+                width: 9px;
+                height: 9px
+            }
+
+            .urlbar span {
+                font-size: 11px;
+                padding: 3px 12px
+            }
+
+            .content {
+                padding: 20px 22px 28px
+            }
+
+            .content h2 {
+                font-size: 30px
+            }
+
+            .content p {
+                font-size: 13px
+            }
+
+            /* sheet from bottom */
+            .panel {
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-height: 88vh;
+                border-radius: 18px 18px 0 0;
+                transform: translateY(40px);
+            }
+
+            .panel.on {
+                transform: translateY(0)
+            }
+
+            /* drag handle */
+            .panel-bar {
+                position: relative;
+                height: 48px;
+                justify-content: flex-start
+            }
+
+            .panel-bar::before {
+                content: '';
+                position: absolute;
+                top: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 36px;
+                height: 4px;
+                border-radius: 2px;
+                background: rgba(0, 0, 0, .12)
+            }
+
+            .panel-body {
+                padding: 24px 24px 48px
+            }
+
+            .panel-body h1 {
+                font-size: 34px
+            }
+
+            .about {
+                font-size: 14px;
+                margin-bottom: 28px
+            }
+
+            .facts {
+                gap: 8px
+            }
+
+            .fact {
+                padding: 12px 14px
+            }
+
+            .nudge {
+                font-size: 10px;
+                bottom: 20px;
+                letter-spacing: .1em
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="name-pill"><b>Seu Nome</b><span class="dot">·</span><span>PORTFOLIO</span></div>
+    </div>
+
+    <div class="scene">
+        <div class="pile" id="pile"></div>
+    </div>
+
+    <div class="backdrop" id="backdrop"></div>
+
+    <div class="panel" id="panel">
+        <div class="panel-bar">
+            <button class="x-btn" id="xBtn"></button>
+            <div class="stoplight"><span></span><span></span><span></span></div>
+            <div class="urlbar"><span id="panelUrl"></span></div>
+        </div>
+        <div class="panel-body" id="panelBody"></div>
+    </div>
+
+    <div class="nudge" id="nudge">PASSE O MOUSE · CLIQUE PARA ABRIR</div>
+
+    <script>
+        var pages = [
+            {
+                url: 'projetos.dev',
+                label: 'PROJETOS',
+                title: 'Trabalhos & Criações',
+                desc: 'Produtos digitais, experimentos de design e interfaces que constroem experiências memoráveis.',
+                detail: {
+                    heading: 'Trabalhos & Criações',
+                    intro: 'Uma seleção de projetos que combinam design cuidadoso com código limpo. Cada um feito com atenção aos detalhes.',
+                    facts: [
+                        { k: 'RECENTE', v: 'Portfolio Cover Flow' },
+                        { k: 'STACK', v: 'React · Framer · Three.js' },
+                        { k: 'STATUS', v: 'Em andamento' },
+                        { k: 'TIPO', v: 'Web · Mobile · Design' }
+                    ],
+                    chips: ['UI Design', 'Frontend', 'Motion', 'Branding', 'Prototipagem']
+                }
+            },
+            {
+                url: 'sobre.eu',
+                label: 'SOBRE',
+                title: 'Quem Sou',
+                desc: 'Designer e dev apaixonado por interfaces que fazem as pessoas pararem e prestarem atenção.',
+                detail: {
+                    heading: 'Quem Sou',
+                    intro: 'Trabalho na interseção entre design e tecnologia. Gosto de coisas bem feitas — tipografia, animação, código limpo.',
+                    facts: [
+                        { k: 'LOCALIZAÇÃO', v: 'Brasil' },
+                        { k: 'EXPERIÊNCIA', v: '3+ anos' },
+                        { k: 'FOCO', v: 'UI/UX + Frontend' },
+                        { k: 'DISPONÍVEL', v: 'Sim, para freelas' }
+                    ],
+                    chips: ['Figma', 'React', 'CSS', 'Motion Design', 'Produto']
+                }
+            },
+            {
+                url: 'estudos.log',
+                label: 'ESTUDOS',
+                title: 'O que Aprendo',
+                desc: 'Notas, experimentos e referências que alimentam meu processo criativo e técnico.',
+                detail: {
+                    heading: 'O que Aprendo',
+                    intro: 'Documentando a jornada: design systems, animações avançadas e tudo que me faz querer construir mais.',
+                    facts: [
+                        { k: 'ATUAL', v: 'WebGL · GLSL shaders' },
+                        { k: 'CONCLUÍDO', v: 'Tipografia editorial' },
+                        { k: 'PRÓXIMO', v: 'Three.js avançado' },
+                        { k: 'MÉTODO', v: 'Build in public' }
+                    ],
+                    chips: ['Shaders', 'WebGL', 'Tipografia', 'Animação', 'Design Systems']
+                }
+            },
+            {
+                url: 'contato.io',
+                label: 'CONTATO',
+                title: 'Vamos Conversar',
+                desc: 'Aberto para projetos, colaborações e conversas sobre design e tecnologia.',
+                detail: {
+                    heading: 'Vamos Conversar',
+                    intro: 'Se você tem um projeto interessante ou só quer trocar uma ideia sobre design e interfaces, me manda uma mensagem.',
+                    facts: [
+                        { k: 'E-MAIL', v: 'oi@seunome.com' },
+                        { k: 'INSTAGRAM', v: '@seunome' },
+                        { k: 'GITHUB', v: 'github.com/seunome' },
+                        { k: 'RESPOSTA', v: 'Em até 24h' }
+                    ],
+                    chips: ['Freela', 'Colaboração', 'Consultoria', 'Mentoria']
+                }
+            },
+            {
+                url: 'about.me',
+                label: 'ABOUT',
+                title: 'Victor da Silva',
+                desc: 'Aspiring Software Developer.',
+                detail: {
+                    heading: 'Victor da Silva',
+                    intro: 'I am an aspiring software developer based in Dublin, currently building strong foundations in Java, Python, and modern web development. I enjoy creating practical projects that focus on clean code, solid logic, and real-world usability.',
+                    facts: [
+                        { k: 'DESIGN', v: 'Awwwards · Dribbble' },
+                        { k: 'LEITURA', v: 'Sidebar.io · Smashing' },
+                        { k: 'TOOLS', v: 'Figma · VS Code · Arc' },
+                        { k: 'INSPIRAÇÃO', v: 'Linear · Vercel · Raycast' }
+                    ],
+                    chips: ['Curadoria', 'Ferramentas', 'Design', 'Dev', 'Leitura']
+                }
+            }
+        ]
+
+        var pile = document.getElementById('pile')
+        var backdrop = document.getElementById('backdrop')
+        var panel = document.getElementById('panel')
+        var panelBody = document.getElementById('panelBody')
+        var panelUrl = document.getElementById('panelUrl')
+        var xBtn = document.getElementById('xBtn')
+        var nudge = document.getElementById('nudge')
+
+        var count = pages.length
+        var touches = {}
+        var onMobile = function () { return window.innerWidth <= 600 }
+        var gapSize = function () { return onMobile() ? 30 : 38 }
+
+        function settle(card, idx, snap) {
+            var lift = (count - 1 - idx) * gapSize()
+            var scale = 1 - (count - 1 - idx) * 0.022
+            if (snap) card.style.transition = 'none'
+            card.style.opacity = '1'
+            card.style.transform = 'translateY(-' + lift + 'px) scale(' + scale + ')'
+            card.style.zIndex = idx + 1
+            if (snap) { card.getBoundingClientRect(); card.style.transition = '' }
+        }
+
+        function tilt(card, idx, mx, my) {
+            var r = card.getBoundingClientRect()
+            var nx = (mx - r.left) / r.width - .5
+            var ny = (my - r.top) / r.height - .5
+            var lift = (count - 1 - idx) * gapSize()
+            var scale = 1 - (count - 1 - idx) * 0.022
+            card.style.transform =
+                'translateY(-' + (lift - ny * 5) + 'px)' +
+                ' scale(' + (scale + .013) + ')' +
+                ' rotateX(' + (ny * -9) + 'deg)' +
+                ' rotateY(' + (nx * 11) + 'deg)' +
+                ' translateX(' + (nx * 7) + 'px)'
+            card.style.boxShadow = 'var(--shadow-up)'
+            card.style.zIndex = 50
+        }
+
+        if (onMobile()) nudge.textContent = 'TOQUE PARA ABRIR · ARRASTE PARA EXPLORAR'
+
+        pages.forEach(function (p, idx) {
+            var card = document.createElement('div')
+            card.className = 'window'
+            card.innerHTML =
+                '<div class="titlebar">' +
+                '<div class="stoplight"><span></span><span></span><span></span></div>' +
+                '<div class="urlbar"><span>' + p.url + '</span></div>' +
+                '</div>' +
+                '<div class="content">' +
+                '<div class="tag">' + p.label + '</div>' +
+                '<h2>' + p.title + '</h2>' +
+                '<p>' + p.desc + '</p>' +
+                '</div>'
+
+
+            pile.appendChild(card)
+
+            settle(card, idx, true)
+
+            /* desktop hover tilt */
+            card.addEventListener('mousemove', function (e) {
+                if (onMobile()) return
+                tilt(card, idx, e.clientX, e.clientY)
+            })
+            card.addEventListener('mouseleave', function () {
+                settle(card, idx, false)
+                card.style.boxShadow = ''
+            })
+            card.addEventListener('click', function () {
+                if (!onMobile()) reveal(p)
+            })
+
+            /* mobile touch tilt */
+            card.addEventListener('touchstart', function (e) {
+                touches[idx] = { moved: false, x0: e.touches[0].clientX, y0: e.touches[0].clientY }
+            }, { passive: true })
+
+            card.addEventListener('touchmove', function (e) {
+                var t = e.touches[0]
+                tilt(card, idx, t.clientX, t.clientY)
+                touches[idx].moved = true
+            }, { passive: true })
+
+            card.addEventListener('touchend', function () {
+                settle(card, idx, false)
+                card.style.boxShadow = ''
+                if (touches[idx] && !touches[idx].moved) reveal(p)
+                touches[idx] = null
+            })
+        })
+
+        function reveal(p) {
+            panelUrl.textContent = p.url
+            panelBody.innerHTML =
+                '<div class="section">' + p.label + '</div>' +
+                '<h1>' + p.detail.heading + '</h1>' +
+                '<p class="about">' + p.detail.intro + '</p>' +
+                '<hr class="sep">' +
+                '<div class="facts">' +
+                p.detail.facts.map(function (f) {
+                    return '<div class="fact"><div class="k">' + f.k + '</div><div class="v">' + f.v + '</div></div>'
+                }).join('') +
+                '</div>' +
+                '<div class="chips">' +
+                p.detail.chips.map(function (c) { return '<span>' + c + '</span>' }).join('') +
+                '</div>'
+            backdrop.classList.add('on')
+            panel.classList.add('on')
+        }
+
+        function dismiss() {
+            backdrop.classList.remove('on')
+            panel.classList.remove('on')
+        }
+
+        /* swipe down to close on mobile */
+        var swipeY = 0
+        panel.addEventListener('touchstart', function (e) { swipeY = e.touches[0].clientY }, { passive: true })
+        panel.addEventListener('touchend', function (e) {
+            if (e.changedTouches[0].clientY - swipeY > 60) dismiss()
+        }, { passive: true })
+
+        xBtn.addEventListener('click', dismiss)
+        backdrop.addEventListener('click', dismiss)
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dismiss() })
+
+        window.addEventListener('resize', function () {
+            pile.querySelectorAll('.window').forEach(function (card, idx) { settle(card, idx, true) })
+            nudge.textContent = onMobile() ? 'TOQUE PARA ABRIR · ARRASTE PARA EXPLORAR' : 'PASSE O MOUSE · CLIQUE PARA ABRIR'
+        })
+    </script>
+</body>
+
+</html>
