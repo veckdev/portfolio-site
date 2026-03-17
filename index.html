@@ -455,7 +455,7 @@ section:last-of-type{border-bottom:none}
       </div>
       <div class="reveal" style="transition-delay:.12s">
         <div class="contact-list">
-          <a href="/cdn-cgi/l/email-protection#c7b1a2a4aca3a2b187aea4aba8b2a3e9a4a8aa" class="c-row"><span class="c-key">Email</span><span class="c-val"><span class="__cf_email__" data-cfemail="661003050d020310260f050a0913024805090b">[email&#160;protected]</span></span></a>
+          <a href="#" id="email-link" class="c-row"><span class="c-key">Email</span><span class="c-val" id="email-val"></span></a>
           <a href="https://github.com/veckdev" class="c-row" target="_blank" rel="noopener"><span class="c-key">GitHub</span><span class="c-val">github.com/veckdev</span></a>
           <a href="https://www.linkedin.com/in/veck/" class="c-row" target="_blank" rel="noopener"><span class="c-key">LinkedIn</span><span class="c-val">linkedin.com/in/veck</span></a>
         </div>
@@ -465,7 +465,7 @@ section:last-of-type{border-bottom:none}
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const secs=document.querySelectorAll('section[id]');
 const navs=document.querySelectorAll('.nav-item');
 const spy=new IntersectionObserver(e=>{
@@ -481,6 +481,9 @@ const ro=new IntersectionObserver(e=>{
   e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}});
 },{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+
+// email anti-obfuscation
+(function(){var u='veckdev',d='icloud.com';var el=document.getElementById('email-link');var val=document.getElementById('email-val');if(el){el.href='mailto:'+u+'@'+d;}if(val){val.textContent=u+'@'+d;}})();
 
 document.getElementById('themeToggle').addEventListener('click',()=>{
   const h=document.documentElement;
