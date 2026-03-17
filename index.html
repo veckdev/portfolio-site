@@ -14,20 +14,21 @@
   --sans:'Google Sans',sans-serif;--code:'Google Sans Code',monospace;
   --sidebar:64px;
   --java:#e76f51;--python:#3a7bd5;--js:#c9960a;--html:#9b59b6;
-  --trans:background 0.25s,color 0.25s,border-color 0.25s;
+  --trans:background 0.4s ease,color 0.4s ease,border-color 0.4s ease,fill 0.4s ease;
 }
 [data-theme="dark"]{
   --bg:#141412;--surface:#1c1c19;--border:#2a2a26;
   --text:#f0f0ea;--muted:#8a8a82;--dim:#3a3a36;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;display:flex;min-height:100vh;transition:var(--trans)}
+aside,main,section,.proj,.about-card,.semester-block,.tools-group,.msc-block,.course-title-block,.contact-list,.c-row,.tag,.pill,.msc-pill,.cpill,.sem-badge{transition:background 0.4s ease,color 0.4s ease,border-color 0.4s ease}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;display:flex;min-height:100vh;transition:var(--trans);justify-content:center}
 
 /* SIDEBAR */
 aside{width:var(--sidebar);position:fixed;top:0;left:0;bottom:0;border-right:1px solid var(--border);background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:2rem 0;z-index:100;transition:var(--trans)}
 .sid-top{display:flex;flex-direction:column;align-items:center;gap:0.25rem}
-.logo-mark{font-family:var(--code);font-size:11px;font-weight:700;color:var(--text);letter-spacing:0.08em;text-decoration:none;margin-bottom:1.5rem;writing-mode:vertical-rl;transform:rotate(180deg)}
-.sid-line{width:1px;height:60px;background:var(--border);margin:0.5rem 0 1rem}
+
+
 nav{display:flex;flex-direction:column;align-items:center;gap:0.25rem}
 .nav-item{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;text-decoration:none;color:var(--dim);transition:color 0.15s,background 0.15s;position:relative}
 .nav-item:hover{color:var(--text);background:var(--surface)}
@@ -45,11 +46,11 @@ nav{display:flex;flex-direction:column;align-items:center;gap:0.25rem}
 [data-theme="dark"] .icon-sun{display:block}[data-theme="dark"] .icon-moon{display:none}
 
 /* MAIN */
-main{margin-left:var(--sidebar);flex:1;max-width:860px}
-section{padding:7rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;scroll-margin-top:0}
+main{margin-left:var(--sidebar);flex:1;max-width:900px;width:100%}
+section{padding:7rem clamp(2rem,5vw,4rem);border-bottom:1px solid var(--border);position:relative;overflow:hidden;scroll-margin-top:0}
 section:last-of-type{border-bottom:none}
 .sec-num{position:absolute;right:-0.02em;bottom:-0.15em;font-size:clamp(8rem,18vw,14rem);font-weight:700;letter-spacing:-0.05em;line-height:1;color:transparent;-webkit-text-stroke:1px var(--border);pointer-events:none;user-select:none;z-index:0}
-.sec-label{font-family:var(--code);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);margin-bottom:3rem;display:flex;align-items:center;gap:0.75rem;position:relative;z-index:1}
+.sec-label{font-family:var(--code);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);margin-bottom:3rem;display:flex;align-items:center;gap:0.75rem;position:relative;z-index:1}
 .sec-label::after{content:'';flex:1;max-width:40px;height:1px;background:var(--border)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -82,7 +83,7 @@ section:last-of-type{border-bottom:none}
 .about-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;position:relative;z-index:1}
 .about-card{background:var(--bg);padding:1.5rem}
 .about-card.surface{background:var(--surface)}
-.about-card h3{font-family:var(--code);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:1.1rem}
+.about-card h3{font-family:var(--code);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:1.1rem}
 .study-item{display:flex;align-items:flex-start;gap:0.65rem;margin-bottom:0.65rem}
 .study-item:last-child{margin-bottom:0}
 .study-icon{font-family:var(--code);font-size:12px;font-weight:700;color:var(--dim);min-width:12px;line-height:1.6}
@@ -92,7 +93,7 @@ section:last-of-type{border-bottom:none}
 .fact-row{display:flex;flex-direction:column;gap:0.1rem}
 .fact-key{font-family:var(--code);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim)}
 .fact-val{font-size:13px;color:var(--muted);line-height:1.5}
-.fact-val strong{color:var(--text);font-weight:600}
+.fact-val strong{color:var(--text);font-weight:700}
 
 /* PROJECTS */
 #projects{background:var(--surface)}
@@ -160,7 +161,7 @@ section:last-of-type{border-bottom:none}
 .tools-label{font-family:var(--code);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);white-space:nowrap;padding-top:2px;min-width:80px}
 .tools-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
 .pill{font-family:var(--code);font-size:11px;font-weight:500;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:3px 10px;border-radius:2px;letter-spacing:0.03em}
-.msc-block{margin-top:0;background:var(--surface);border:1px solid var(--border);border-top:1px solid var(--border);border-radius:0 0 3px 3px;padding:1.25rem 1.5rem;position:relative;z-index:1}
+.msc-block{margin-top:0;background:var(--surface);border:1px solid var(--border);border-top:1px solid var(--border);border-radius:0 0 3px 3px;padding:1.4rem 1.5rem;position:relative;z-index:1}
 .msc-label{font-family:var(--code);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:0.9rem}
 .msc-paths{display:flex;flex-wrap:wrap;gap:0.4rem}
 .msc-pill{font-family:var(--code);font-size:12px;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:4px 12px;border-radius:2px;letter-spacing:0.03em}
@@ -184,8 +185,8 @@ section:last-of-type{border-bottom:none}
 /* MOBILE */
 @media(max-width:740px){
   aside{width:100%;height:56px;min-height:unset;flex-direction:row;align-items:center;padding:0 1.25rem;justify-content:space-between;border-right:none;border-bottom:1px solid var(--border)}
-  .logo-mark{writing-mode:horizontal-tb;transform:none;margin-bottom:0;font-size:12px}
-  .sid-line{display:none}
+  
+  
   nav{flex-direction:row;gap:0}
   .sid-copy{display:none}
   .sid-bottom{flex-direction:row;gap:0.25rem;align-items:center}
@@ -199,6 +200,7 @@ section:last-of-type{border-bottom:none}
   .hero-desc{max-width:100%;min-width:unset}
   .hero-actions{flex-direction:row;flex-wrap:wrap}
   .nav-item::after{display:none}
+  .nav-item.active::before{right:50%;top:auto;bottom:4px;transform:translateX(50%)}
   .about-cards,.semester-grid,.contact-grid,.tools-groups{grid-template-columns:1fr}
   .proven-row{grid-template-columns:1fr}
   .pr-left{border-right:none;border-bottom:1px solid var(--border)}
@@ -211,13 +213,11 @@ section:last-of-type{border-bottom:none}
 
 <aside>
   <div class="sid-top">
-    <a href="#hero" class="logo-mark">veck.dev</a>
-    <div class="sid-line"></div>
     <nav id="sidenav">
       <a href="#hero"     class="nav-item active" data-s="hero"     data-label="Home"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></a>
       <a href="#about"    class="nav-item" data-s="about"    data-label="About"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></a>
       <a href="#projects" class="nav-item" data-s="projects" data-label="Projects"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
-      <a href="#skills"   class="nav-item" data-s="skills"   data-label="Skills"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></a>
+      <a href="#skills" class="nav-item" data-s="skills" data-label="Skills"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></a>
       <a href="#contact"  class="nav-item" data-s="contact"  data-label="Contact"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
     </nav>
   </div>
@@ -244,10 +244,10 @@ section:last-of-type{border-bottom:none}
       <h1 class="hero-h1 reveal" style="transition-delay:.07s">Victor<br/>da Silva.</h1>
       <p class="hero-h1-sub reveal" style="transition-delay:.14s">Computing student,<br/>software engineering focus.</p>
       <div class="hero-body reveal" style="transition-delay:.2s">
-        <p class="hero-desc">I've always been methodical. The way code is <strong>structured, layered, and organised</strong> was what drew me to programming — the idea that complex systems are built from clear, deliberate decisions.</p>
+        <p class="hero-desc">I've always been methodical. The way code is <strong>structured, layered, and organized</strong> was what drew me to programming — the idea that complex systems are built from clear, deliberate decisions.</p>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-solid">See my projects</a>
-          <a href="https://github.com/veckdev" class="btn btn-outline">GitHub ↗</a>
+          <a href="https://github.com/veckdev" class="btn btn-outline" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
     </div>
@@ -284,15 +284,15 @@ section:last-of-type{border-bottom:none}
     <span class="sec-num" aria-hidden="true">02</span>
     <p class="sec-label reveal">Projects</p>
     <div class="proj-list reveal" style="transition-delay:.08s">
-      <a href="https://github.com/veckdev/tax-calculator" class="proj proj-featured">
+      <a href="https://github.com/veckdev/tax-calculator" class="proj" target="_blank" rel="noopener" proj-featured">
         <div>
-          <div class="proj-meta"><span class="proj-num">01</span><span class="lang-dot lang-python"></span><span class="lang-label">Python</span><span class="fav-badge">favourite</span></div>
+          <div class="proj-meta"><span class="proj-num">01</span><span class="lang-dot lang-python"></span><span class="lang-label">Python</span><span class="fav-badge">favorite</span></div>
           <p class="proj-name">Revenue Tax Split Calculator</p>
           <p class="proj-desc">Built this because I actually needed it — a Python script to calculate and split tax across revenue sources. The kind of project where clean logic has real consequences: getting it wrong costs money.</p>
           <div class="proj-tags"><span class="tag">Python</span><span class="tag">Logic</span></div>
         </div><span class="proj-arrow">↗</span>
       </a>
-      <a href="https://github.com/veckdev/cinema-oop-java" class="proj">
+      <a href="https://github.com/veckdev/cinema-oop-java" class="proj" target="_blank" rel="noopener"">
         <div>
           <div class="proj-meta"><span class="proj-num">02</span><span class="lang-dot lang-java"></span><span class="lang-label">Java</span></div>
           <p class="proj-name">Cinema Booking System</p>
@@ -300,7 +300,7 @@ section:last-of-type{border-bottom:none}
           <div class="proj-tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">CLI</span></div>
         </div><span class="proj-arrow">↗</span>
       </a>
-      <a href="https://github.com/veckdev/library-system" class="proj">
+      <a href="https://github.com/veckdev/library-system" class="proj" target="_blank" rel="noopener"">
         <div>
           <div class="proj-meta"><span class="proj-num">03</span><span class="lang-dot lang-java"></span><span class="lang-label">Java</span></div>
           <p class="proj-name">Library Management System</p>
@@ -308,7 +308,7 @@ section:last-of-type{border-bottom:none}
           <div class="proj-tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">ArrayList</span><span class="tag">CLI</span></div>
         </div><span class="proj-arrow">↗</span>
       </a>
-      <a href="https://github.com/veckdev/student-grade-tracker" class="proj">
+      <a href="https://github.com/veckdev/student-grade-tracker" class="proj" target="_blank" rel="noopener"">
         <div>
           <div class="proj-meta"><span class="proj-num">04</span><span class="lang-dot lang-python"></span><span class="lang-label">Python</span></div>
           <p class="proj-name">Student Grade Tracker</p>
@@ -316,7 +316,7 @@ section:last-of-type{border-bottom:none}
           <div class="proj-tags"><span class="tag">Python</span><span class="tag">pytest</span><span class="tag">JSON</span><span class="tag">CLI</span></div>
         </div><span class="proj-arrow">↗</span>
       </a>
-      <a href="https://github.com/veckdev/todo-app" class="proj">
+      <a href="https://github.com/veckdev/todo-app" class="proj" target="_blank" rel="noopener"">
         <div>
           <div class="proj-meta"><span class="proj-num">05</span><span class="lang-dot lang-js"></span><span class="lang-label">JavaScript</span></div>
           <p class="proj-name">To-Do App</p>
@@ -324,7 +324,7 @@ section:last-of-type{border-bottom:none}
           <div class="proj-tags"><span class="tag">JavaScript</span><span class="tag">ES6+</span><span class="tag">localStorage</span><span class="tag">State</span></div>
         </div><span class="proj-arrow">↗</span>
       </a>
-      <a href="https://github.com/veckdev/adventuregear-website" class="proj">
+      <a href="https://github.com/veckdev/adventuregear-website" class="proj" target="_blank" rel="noopener"">
         <div>
           <div class="proj-meta"><span class="proj-num">06</span><span class="lang-dot lang-html"></span><span class="lang-label">HTML</span><span class="college-badge">college</span></div>
           <p class="proj-name">AdventureGear Website</p>
@@ -455,9 +455,9 @@ section:last-of-type{border-bottom:none}
       </div>
       <div class="reveal" style="transition-delay:.12s">
         <div class="contact-list">
-          <a href="/cdn-cgi/l/email-protection#c8beadaba3acadbe88a1aba4a7bdace6aba7a5" class="c-row"><span class="c-key">Email</span><span class="c-val"><span class="__cf_email__" data-cfemail="9aecfff9f1feffecdaf3f9f6f5effeb4f9f5f7">[email&#160;protected]</span></span></a>
-          <a href="https://github.com/veckdev" class="c-row"><span class="c-key">GitHub</span><span class="c-val">github.com/veckdev</span></a>
-          <a href="https://www.linkedin.com/in/veck/" class="c-row"><span class="c-key">LinkedIn</span><span class="c-val">linkedin.com/in/veck</span></a>
+          <a href="/cdn-cgi/l/email-protection#c7b1a2a4aca3a2b187aea4aba8b2a3e9a4a8aa" class="c-row"><span class="c-key">Email</span><span class="c-val"><span class="__cf_email__" data-cfemail="661003050d020310260f050a0913024805090b">[email&#160;protected]</span></span></a>
+          <a href="https://github.com/veckdev" class="c-row" target="_blank" rel="noopener"><span class="c-key">GitHub</span><span class="c-val">github.com/veckdev</span></a>
+          <a href="https://www.linkedin.com/in/veck/" class="c-row" target="_blank" rel="noopener"><span class="c-key">LinkedIn</span><span class="c-val">linkedin.com/in/veck</span></a>
         </div>
       </div>
     </div>
