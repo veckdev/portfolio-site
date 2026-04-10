@@ -19,6 +19,7 @@
       padding: 0
     }
 
+    /* ── TOKENS ── */
     :root {
       --bg: #ffffff;
       --surface: #f7f7f7;
@@ -31,6 +32,20 @@
       --code: 'Google Sans Code', monospace;
       --max: 960px;
       --trans: background 0.3s, color 0.3s, border-color 0.3s;
+
+      /* type scale — used consistently everywhere */
+      --fs-10: 10px;
+      /* labels, eyebrows, tags, meta */
+      --fs-11: 11px;
+      /* secondary mono, pills */
+      --fs-12: 12px;
+      /* code values, c-val */
+      --fs-13: 13px;
+      /* body secondary, descriptions */
+      --fs-14: 14px;
+      /* proj-name, contact-sub */
+      --fs-15: 15px;
+      /* sec-lead, body */
     }
 
     [data-theme="dark"] {
@@ -50,43 +65,11 @@
       font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
-      font-size: 15px;
+      font-size: var(--fs-15);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       transition: var(--trans);
     }
-
-
-    .theme-btn {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 3px;
-      border: none;
-      background: transparent;
-      color: var(--dim);
-      cursor: pointer;
-      padding: 0;
-      transition: color 0.12s, background 0.12s;
-    }
-
-    .theme-btn:hover {
-      color: var(--text);
-      background: var(--surface)
-    }
-
-    .theme-btn svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.75;
-      stroke-linecap: round;
-      stroke-linejoin: round
-    }
-
 
     /* ── WRAPPER ── */
     .wrap {
@@ -95,7 +78,8 @@
       padding: 0 clamp(1.5rem, 4vw, 3rem);
     }
 
-    /* ── SECTIONS ── */
+    /* ── SECTIONS ──
+   Alternating bg creates visual rhythm between sections */
     section {
       padding: 7rem 0;
       border-bottom: 1px solid var(--border);
@@ -104,6 +88,26 @@
 
     section:last-of-type {
       border-bottom: none
+    }
+
+    #hero {
+      background: var(--bg)
+    }
+
+    #about {
+      background: var(--bg)
+    }
+
+    #projects {
+      background: var(--surface)
+    }
+
+    #skills {
+      background: var(--bg)
+    }
+
+    #contact {
+      background: var(--surface)
     }
 
     /* ── REVEAL ── */
@@ -127,29 +131,11 @@
       overflow: hidden;
     }
 
-    .hero-bg-text {
-      position: absolute;
-      right: -0.04em;
-      bottom: -0.1em;
-      font-size: clamp(9rem, 20vw, 18rem);
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--border);
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-      z-index: 0;
-      transition: var(--trans);
-    }
-
     .hero-content {
       position: relative;
       z-index: 1;
       width: 100%
     }
-
 
     .hero-h1 {
       font-size: clamp(3.5rem, 8vw, 7rem);
@@ -169,7 +155,7 @@
       font-weight: 400;
       color: var(--muted);
       letter-spacing: -0.01em;
-      line-height: 1.5;
+      line-height: 1.6;
       max-width: 480px;
       margin-bottom: 3rem;
       margin-top: 1.5rem;
@@ -188,7 +174,7 @@
 
     .btn {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       letter-spacing: 0.08em;
       font-weight: 700;
       padding: 0.65rem 1.4rem;
@@ -220,7 +206,6 @@
       border-color: var(--text)
     }
 
-    /* hero bottom strip */
     .hero-strip {
       display: flex;
       align-items: center;
@@ -248,17 +233,17 @@
 
     .hero-stat-label {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--dim);
     }
 
-    /* ── SECTION HEADER ── */
+    /* ── SECTION HEADER (shared) ── */
     .sec-eyebrow {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -287,7 +272,7 @@
     }
 
     .sec-lead {
-      font-size: 15px;
+      font-size: var(--fs-15);
       color: var(--muted);
       line-height: 1.9;
       max-width: 560px;
@@ -303,7 +288,7 @@
       font-style: italic
     }
 
-    /* ── ABOUT GRID ── */
+    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -317,7 +302,7 @@
     .about-cell {
       background: var(--bg);
       padding: 2rem;
-      transition: var(--trans);
+      transition: var(--trans)
     }
 
     .about-cell.surface {
@@ -326,7 +311,7 @@
 
     .about-cell h3 {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -346,7 +331,7 @@
 
     .about-item-plus {
       font-family: var(--code);
-      font-size: 11px;
+      font-size: var(--fs-11);
       font-weight: 700;
       color: var(--blue);
       min-width: 12px;
@@ -355,7 +340,7 @@
     }
 
     .about-item-body {
-      font-size: 13px;
+      font-size: var(--fs-13);
       color: var(--muted);
       line-height: 1.65
     }
@@ -376,7 +361,7 @@
 
     .fact-key {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -385,7 +370,7 @@
     }
 
     .fact-val {
-      font-size: 13px;
+      font-size: var(--fs-13);
       color: var(--muted);
       line-height: 1.5
     }
@@ -441,15 +426,15 @@
       align-items: center;
       gap: 0.6rem;
       margin-bottom: 0.5rem;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
 
     .proj-num {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       color: var(--dim);
-      letter-spacing: 0.1em
+      letter-spacing: 0.1em;
     }
 
     .lang-dot {
@@ -477,9 +462,9 @@
 
     .lang-label {
       font-family: var(--code);
-      font-size: 11px;
+      font-size: var(--fs-11);
       color: var(--muted);
-      letter-spacing: 0.04em
+      letter-spacing: 0.04em;
     }
 
     .fav-badge {
@@ -507,18 +492,19 @@
     }
 
     .proj-name {
-      font-size: 15px;
+      font-size: var(--fs-14);
+      /* was 15px — now distinct from body */
       font-weight: 700;
       margin-bottom: 0.35rem;
-      color: var(--text)
+      color: var(--text);
     }
 
     .proj-desc {
-      font-size: 13px;
+      font-size: var(--fs-13);
       color: var(--muted);
       line-height: 1.8;
       margin-bottom: 0.75rem;
-      max-width: 600px
+      max-width: 600px;
     }
 
     .proj-tags {
@@ -529,7 +515,7 @@
 
     .tag {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       background: var(--surface);
       color: var(--muted);
       border: 1px solid var(--border);
@@ -540,7 +526,7 @@
     }
 
     .proj-arrow {
-      font-size: 14px;
+      font-size: var(--fs-14);
       color: var(--dim);
       transition: transform 0.15s, color 0.12s;
       flex-shrink: 0;
@@ -557,12 +543,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
+      /* was 4rem — more breathing room before curriculum */
     }
 
     .skills-col h3 {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -577,7 +564,8 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
-      padding: 0.65rem 0;
+      padding: 0.75rem 0;
+      /* was 0.65rem — slightly more height */
       border-bottom: 1px solid var(--border);
     }
 
@@ -587,22 +575,22 @@
 
     .skill-name {
       font-family: var(--code);
-      font-size: 12px;
+      font-size: var(--fs-12);
       font-weight: 700;
       color: var(--text);
     }
 
     .skill-sub {
       font-family: var(--code);
-      font-size: 11px;
+      font-size: var(--fs-11);
       color: var(--dim);
       display: block;
-      margin-top: 1px
+      margin-top: 1px;
     }
 
     .skill-count {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       color: var(--dim);
       white-space: nowrap;
@@ -610,7 +598,13 @@
       flex-shrink: 0;
     }
 
-    /* curriculum */
+    /* curriculum — separated from skills with its own eyebrow spacing */
+    .curriculum-eyebrow {
+      margin-top: 0;
+      /* skills-cols margin-bottom handles the gap */
+      margin-bottom: 1.25rem;
+    }
+
     .curriculum {
       border: 1px solid var(--border);
       border-radius: 2px;
@@ -620,7 +614,8 @@
 
     .curriculum-header {
       background: var(--surface);
-      padding: 1.5rem 2rem;
+      padding: 1.75rem 2rem;
+      /* aligned with .proj padding */
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: flex-start;
@@ -631,16 +626,16 @@
     }
 
     .curriculum-header h3 {
-      font-size: 13px;
+      font-size: var(--fs-14);
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 0.2rem
+      margin-bottom: 0.25rem;
     }
 
     .curriculum-header p {
-      font-size: 12px;
+      font-size: var(--fs-12);
       color: var(--muted);
-      line-height: 1.5
+      line-height: 1.6;
     }
 
     .cpills {
@@ -652,7 +647,7 @@
 
     .cpill {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 2px;
@@ -678,7 +673,7 @@
 
     .semester {
       background: var(--bg);
-      padding: 1.5rem 2rem;
+      padding: 1.75rem 2rem;
       transition: var(--trans)
     }
 
@@ -688,7 +683,7 @@
 
     .sem-label {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -701,7 +696,7 @@
 
     .sem-badge {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 2px;
@@ -724,7 +719,7 @@
     }
 
     .course-list li {
-      font-size: 13px;
+      font-size: var(--fs-13);
       color: var(--muted);
       display: flex;
       align-items: flex-start;
@@ -735,7 +730,7 @@
     .course-list li::before {
       content: '+';
       font-family: var(--code);
-      font-size: 11px;
+      font-size: var(--fs-11);
       font-weight: 700;
       color: var(--dim);
       flex-shrink: 0;
@@ -753,14 +748,15 @@
 
     .msc-footer {
       background: var(--surface);
-      padding: 1.5rem 2rem;
+      padding: 1.75rem 2rem;
+      /* aligned with curriculum-header */
       border-top: 1px solid var(--border);
       transition: var(--trans);
     }
 
     .msc-label {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -776,7 +772,7 @@
 
     .msc-pill {
       font-family: var(--code);
-      font-size: 11px;
+      font-size: var(--fs-11);
       color: var(--muted);
       background: var(--bg);
       border: 1px solid var(--border);
@@ -791,10 +787,6 @@
     }
 
     /* ── CONTACT ── */
-    #contact {
-      background: var(--surface)
-    }
-
     .contact-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -812,10 +804,10 @@
     }
 
     .contact-sub {
-      font-size: 14px;
+      font-size: var(--fs-14);
       color: var(--muted);
       line-height: 1.9;
-      margin-bottom: 2rem
+      margin-bottom: 2rem;
     }
 
     .contact-sub strong {
@@ -825,7 +817,7 @@
 
     .contact-note {
       font-family: var(--code);
-      font-size: 11px;
+      font-size: var(--fs-11);
       color: var(--dim);
       line-height: 1.9;
       border-left: 1px solid var(--border);
@@ -859,7 +851,7 @@
 
     .c-key {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -869,9 +861,9 @@
 
     .c-val {
       font-family: var(--code);
-      font-size: 12px;
+      font-size: var(--fs-12);
       color: var(--muted);
-      transition: color 0.12s
+      transition: color 0.12s;
     }
 
     .c-row:hover .c-val {
@@ -908,7 +900,7 @@
       align-items: center;
       gap: 7px;
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -925,7 +917,7 @@
 
     .footer-copy {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 500;
       letter-spacing: 0.06em;
       color: var(--dim);
@@ -939,7 +931,7 @@
 
     .footer-link {
       font-family: var(--code);
-      font-size: 10px;
+      font-size: var(--fs-10);
       font-weight: 500;
       letter-spacing: 0.08em;
       color: var(--dim);
@@ -993,7 +985,7 @@
       fill: none;
       stroke-width: 1.75;
       stroke-linecap: round;
-      stroke-linejoin: round
+      stroke-linejoin: round;
     }
 
     .theme-opt.sys svg {
@@ -1003,20 +995,12 @@
 
     /* ── MOBILE ── */
     @media(max-width:680px) {
-      nav {
-        padding: 0 1.25rem
-      }
-
       section {
-        padding: 4rem 0
+        padding: 4.5rem 0
       }
 
       .wrap {
         padding: 0 1.25rem
-      }
-
-      .nav-links {
-        display: none
       }
 
       .hero-actions {
@@ -1029,10 +1013,15 @@
       }
 
       .about-grid,
-      .skills-cols,
       .semesters,
       .contact-layout {
         grid-template-columns: 1fr
+      }
+
+      .skills-cols {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3.5rem
       }
 
       .sec-h2 {
@@ -1047,8 +1036,8 @@
         padding-left: 1.5rem
       }
 
-      .skills-cols {
-        gap: 2rem
+      .curriculum-header {
+        flex-direction: column
       }
     }
   </style>
@@ -1067,6 +1056,7 @@
         <p class="hero-sub reveal" style="transition-delay:.12s">
           Software engineering student who believes complex systems are built from
           <strong>clear, deliberate decisions</strong> — structured, layered, and testable by design.
+          Currently seeking an internship where I can contribute and grow.
         </p>
         <div class="hero-actions reveal" style="transition-delay:.18s">
           <a href="#projects" class="btn btn-solid">See my projects</a>
@@ -1100,29 +1090,31 @@
       <p class="sec-eyebrow reveal">About</p>
       <h2 class="sec-h2 reveal" style="transition-delay:.04s">Methodical by nature.</h2>
       <p class="sec-lead reveal" style="transition-delay:.08s">
-        I'm Victor — a Computing student in Dublin finishing a <strong>Higher Diploma in Science in Computing (NFQ Level
+        I'm Victor, a Computing student in Dublin finishing a <strong>Higher Diploma in Science in Computing (NFQ Level
           8)</strong>. What drew me to programming wasn't the output, it was the structure. The way a well-designed
-        system holds together under pressure — <em>that's</em> what I find interesting. Long term, I want to build
-        things at the intersection of <strong>software engineering and AI</strong>, at companies that treat code quality
-        as a first-class concern.
+        system holds together under pressure — <em>that's</em> what I find interesting. I'm early in my career, but I
+        take correctness seriously. Every project I've written is layered, testable, and structured by design. Long
+        term, I want to build distributed systems and work at the intersection of <strong>software engineering and
+          AI</strong>.
       </p>
       <div class="about-grid reveal" style="transition-delay:.12s">
         <div class="about-cell">
           <h3>What I'm working on</h3>
           <div class="about-item"><span class="about-item-plus">+</span>
-            <div class="about-item-body"><strong>OOP in Java</strong>Encapsulation, inheritance, building real CLI
-              systems</div>
+            <div class="about-item-body"><strong>OOP in Java</strong>Building real CLI systems. Encapsulation,
+              inheritance, separation of concerns.</div>
           </div>
           <div class="about-item"><span class="about-item-plus">+</span>
-            <div class="about-item-body"><strong>Python scripting</strong>Automation, data handling, testing with pytest
+            <div class="about-item-body"><strong>Python</strong>Automation, data handling, and test suites with pytest.
             </div>
           </div>
           <div class="about-item"><span class="about-item-plus">+</span>
-            <div class="about-item-body"><strong>Web fundamentals</strong>HTML, CSS, vanilla JS — no frameworks yet,
-              just the core</div>
+            <div class="about-item-body"><strong>Data structures and algorithms</strong>Studying as part of Sem. 2
+              curriculum. Arrays, linked lists, complexity analysis.</div>
           </div>
           <div class="about-item"><span class="about-item-plus">+</span>
-            <div class="about-item-body"><strong>Databases</strong>Relational models, SQL basics, schema design</div>
+            <div class="about-item-body"><strong>Databases</strong>Relational models, SQL, and schema design with real
+              data.</div>
           </div>
         </div>
         <div class="about-cell surface">
@@ -1141,7 +1133,7 @@
           </div>
           <div class="fact-row">
             <p class="fact-key">Goal</p>
-            <p class="fact-val">SE internship · MSc in AI or Data Analytics</p>
+            <p class="fact-val">SDE internship · MSc in AI or Data Analytics</p>
           </div>
         </div>
       </div>
@@ -1153,8 +1145,9 @@
     <div class="wrap">
       <p class="sec-eyebrow reveal">Projects</p>
       <h2 class="sec-h2 reveal" style="transition-delay:.04s">Projects.</h2>
-      <p class="sec-lead reveal" style="transition-delay:.08s">Early-stage work, but built properly — layered,
-        structured, and covered by tests where it counts. Every repo is public.</p>
+      <p class="sec-lead reveal" style="transition-delay:.08s">Early-stage work, but built properly. Each project
+        applies object-oriented design, modular structure, and where it counts, automated tests. Every repo is public on
+        GitHub.</p>
       <div class="proj-grid reveal" style="transition-delay:.12s">
 
         <a href="https://github.com/veckdev/tax-calculator" class="proj proj-featured" target="_blank" rel="noopener">
@@ -1162,10 +1155,10 @@
             <div class="proj-meta"><span class="proj-num">01</span><span class="lang-dot lang-python"></span><span
                 class="lang-label">Python</span><span class="fav-badge">favorite</span></div>
             <p class="proj-name">Revenue Tax Split Calculator</p>
-            <p class="proj-desc">Built this because I actually needed it — a Python script to calculate and split tax
-              across revenue sources. The kind of project where clean logic has real consequences: getting it wrong
-              costs money.</p>
-            <div class="proj-tags"><span class="tag">Python</span><span class="tag">Logic</span></div>
+            <p class="proj-desc">A Python script to calculate and split tax across revenue sources. Clean logic with
+              real consequences — getting it wrong costs money.</p>
+            <div class="proj-tags"><span class="tag">Python</span><span class="tag">Logic</span><span
+                class="tag">CLI</span></div>
           </div><span class="proj-arrow">↗</span>
         </a>
 
@@ -1174,8 +1167,8 @@
             <div class="proj-meta"><span class="proj-num">02</span><span class="lang-dot lang-java"></span><span
                 class="lang-label">Java</span></div>
             <p class="proj-name">Cinema Booking System</p>
-            <p class="proj-desc">CLI-based booking system built to apply OOP in practice — classes, encapsulation,
-              inheritance, and a clean separation of concerns without a framework.</p>
+            <p class="proj-desc">CLI booking system applying OOP in practice. Classes, encapsulation, inheritance, and a
+              clean separation of concerns without a framework.</p>
             <div class="proj-tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">CLI</span>
             </div>
           </div><span class="proj-arrow">↗</span>
@@ -1186,8 +1179,8 @@
             <div class="proj-meta"><span class="proj-num">03</span><span class="lang-dot lang-java"></span><span
                 class="lang-label">Java</span></div>
             <p class="proj-name">Library Management System</p>
-            <p class="proj-desc">A Java CLI system split across three layers — app, model, and service — each with a
-              single responsibility. Structure matters as much as features.</p>
+            <p class="proj-desc">Java CLI split across three layers: app, model, and service. Single responsibility
+              throughout — structure matters as much as features.</p>
             <div class="proj-tags"><span class="tag">Java</span><span class="tag">OOP</span><span
                 class="tag">ArrayList</span><span class="tag">CLI</span></div>
           </div><span class="proj-arrow">↗</span>
@@ -1198,8 +1191,8 @@
             <div class="proj-meta"><span class="proj-num">04</span><span class="lang-dot lang-python"></span><span
                 class="lang-label">Python</span></div>
             <p class="proj-name">Student Grade Tracker</p>
-            <p class="proj-desc">A properly structured Python CLI tool — models, calculator, repository, and interface
-              each in their own module. Covered by a pytest suite across four test files.</p>
+            <p class="proj-desc">Python CLI with four modules, each with a single responsibility. Grades persisted in
+              JSON, covered by a pytest suite across four test files.</p>
             <div class="proj-tags"><span class="tag">Python</span><span class="tag">pytest</span><span
                 class="tag">JSON</span><span class="tag">CLI</span></div>
           </div><span class="proj-arrow">↗</span>
@@ -1211,7 +1204,7 @@
                 class="lang-label">JavaScript</span></div>
             <p class="proj-name">To-Do App</p>
             <p class="proj-desc">No frameworks, no libraries. Tasks in memory, synced to localStorage, UI re-renders
-              from state. A deliberate exercise in understanding how things connect before reaching for a framework.</p>
+              from state — an exercise in understanding how things connect before reaching for a framework.</p>
             <div class="proj-tags"><span class="tag">JavaScript</span><span class="tag">ES6+</span><span
                 class="tag">localStorage</span><span class="tag">State</span></div>
           </div><span class="proj-arrow">↗</span>
@@ -1222,7 +1215,7 @@
             <div class="proj-meta"><span class="proj-num">06</span><span class="lang-dot lang-html"></span><span
                 class="lang-label">HTML</span><span class="college-badge">college</span></div>
             <p class="proj-name">AdventureGear Website</p>
-            <p class="proj-desc">A fully responsive 3-page site for a fictional outdoor brand — first time building
+            <p class="proj-desc">Fully responsive 3-page site for a fictional outdoor brand. First time building
               something that had to look good and work correctly at every screen size.</p>
             <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span
                 class="tag">Bootstrap</span></div>
@@ -1238,7 +1231,7 @@
     <div class="wrap">
       <p class="sec-eyebrow reveal">Skills</p>
       <h2 class="sec-h2 reveal" style="transition-delay:.04s">Skills.</h2>
-      <p class="sec-lead reveal" style="transition-delay:.08s">Each skill is tied to a shipped project — not a tutorial,
+      <p class="sec-lead reveal" style="transition-delay:.08s">Each skill is tied to a shipped project. Not a tutorial,
         not a course certificate.</p>
 
       <div class="skills-cols reveal" style="transition-delay:.1s">
@@ -1261,8 +1254,8 @@
             <span class="skill-count">4 projects</span>
           </div>
           <div class="skill-row">
-            <div><span class="skill-name">State &amp; persistence</span><span class="skill-sub">JavaScript ·
-                Python</span></div>
+            <div><span class="skill-name">State and persistence</span><span class="skill-sub">JavaScript · Python</span>
+            </div>
             <span class="skill-count">2 projects</span>
           </div>
           <div class="skill-row">
@@ -1274,7 +1267,7 @@
         <div class="skills-col">
           <h3>Dev environment</h3>
           <div class="skill-row">
-            <div><span class="skill-name">Git &amp; GitHub</span><span class="skill-sub">All projects versioned and
+            <div><span class="skill-name">Git and GitHub</span><span class="skill-sub">All projects versioned and
                 public</span></div>
           </div>
           <div class="skill-row">
@@ -1292,13 +1285,13 @@
             </div>
           </div>
           <div class="skill-row">
-            <div><span class="skill-name">Bootstrap 5</span><span class="skill-sub">Responsive layout &amp;
+            <div><span class="skill-name">Bootstrap 5</span><span class="skill-sub">Responsive layout and
                 components</span></div>
           </div>
         </div>
       </div>
 
-      <p class="sec-eyebrow reveal" style="transition-delay:.12s;margin-bottom:1.25rem">Curriculum</p>
+      <p class="sec-eyebrow curriculum-eyebrow reveal" style="transition-delay:.12s">Curriculum</p>
       <div class="curriculum reveal" style="transition-delay:.15s">
         <div class="curriculum-header">
           <div>
@@ -1318,15 +1311,15 @@
               <li class="on">Introduction to Databases</li>
               <li class="on">Object Oriented Software Engineering</li>
               <li class="on">Software Development</li>
-              <li class="on">Web Design &amp; Client Side Scripting</li>
+              <li class="on">Web Design and Client Side Scripting</li>
             </ul>
           </div>
           <div class="semester surface">
             <div class="sem-label">Semester 2 <span class="sem-badge">upcoming</span></div>
             <ul class="course-list">
-              <li>Computer Architecture, OS &amp; Networks</li>
+              <li>Computer Architecture, OS and Networks</li>
               <li>Data Structures</li>
-              <li>Algorithms &amp; Advanced Programming</li>
+              <li>Algorithms and Advanced Programming</li>
               <li>Distributed Systems</li>
             </ul>
           </div>
@@ -1343,7 +1336,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1354,10 +1346,12 @@
       <div class="contact-layout">
         <div class="reveal" style="transition-delay:.06s">
           <h2 class="contact-h">Let's talk.</h2>
-          <p class="contact-sub">I'm looking for <strong>internship opportunities</strong> in software engineering,
-            data, or AI. Ideally somewhere that ships real systems and cares about how they're built — not just that
-            they ship. If that sounds like your team, I'd like to hear from you.</p>
-          <p class="contact-note">// Dublin, Ireland<br />// open to remote &amp; hybrid</p>
+          <p class="contact-sub">I'm looking for an <strong>SDE internship</strong>, 3 or 6 months. I'm early in my
+            career but I take engineering seriously. Structured code, proper testing, and a genuine curiosity about how
+            large-scale systems are built. If you're looking for someone who wants to learn fast and contribute
+            meaningfully, I'd like to hear from you.</p>
+          <p class="contact-note">// Dublin, Ireland<br />// available from summer 2025<br />// open to on-site and
+            hybrid</p>
         </div>
         <div class="reveal" style="transition-delay:.12s">
           <div class="c-list">
@@ -1381,7 +1375,6 @@
           <span class="footer-status-dot"></span>
           Available for internships.
         </div>
-        <span class="footer-copy">© 2026 Victor da Silva</span>
       </div>
       <div class="footer-right">
         <a href="https://github.com/veckdev" class="footer-link" target="_blank" rel="noopener">GitHub</a>
@@ -1429,10 +1422,8 @@
       if (val) val.textContent = u + '@' + d;
     })();
 
-    // theme switcher
     const html = document.documentElement;
     let currentMode = localStorage.getItem('theme') || 'system';
-
     function applyTheme(mode) {
       currentMode = mode;
       localStorage.setItem('theme', mode);
@@ -1446,15 +1437,12 @@
         b.classList.toggle('active', b.dataset.mode === mode);
       });
     }
-
     document.querySelectorAll('.theme-opt').forEach(b => {
       b.addEventListener('click', () => applyTheme(b.dataset.mode));
     });
-
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (currentMode === 'system') applyTheme('system');
     });
-
     applyTheme(currentMode);
   </script>
 </body>
