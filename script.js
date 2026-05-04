@@ -22,3 +22,4 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
 });
 
 apply(mode);
+document.getElementById("foot-year").textContent = new Date().getFullYear();
