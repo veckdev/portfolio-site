@@ -8,12 +8,12 @@
 
 :root {
   /* Light palette */
-  --bg: #f7f6f6;
-  --surface: #e6e2e1;
-  --border: #cdc5c2;
-  --text: #3c3633;
-  --muted: #70615c;
-  --dim: #8a7d77;
+  --bg: #ffffff;
+  --surface: #f2f2f7;
+  --border: #c6c6c8;
+  --text: #1c1c1e;
+  --muted: #6c6c70;
+  --dim: #aeaeb2;
 
   /* Typography */
   --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, sans-serif;
@@ -35,12 +35,12 @@
 }
 
 [data-theme="dark"] {
-  --bg: #1b1917;
-  --surface: #342f2d;
-  --border: #584e49;
-  --text: #f7f6f6;
-  --muted: #70615c;
-  --dim: #8a7d77;
+  --bg: #1c1c1e;
+  --surface: #2c2c2e;
+  --border: #3a3a3c;
+  --text: #f5f5f7;
+  --muted: #636366;
+  --dim: #48484a;
 }
 
 html,
