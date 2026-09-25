@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Victor da Silva</title>
+  <meta name="description" content="Projects and software engineering work by Victor da Silva, a computing student in Dublin." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main class="wrap" id="main">
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">home</a>
+      <a href="projects.html" class="active" aria-current="page">projects</a>
+      <a href="https://github.com/veckdev" target="_blank" rel="noopener">github</a>
+      <a href="https://www.linkedin.com/in/veck/" target="_blank" rel="noopener">linkedin</a>
+    </nav>
+
+    <div class="header-row">
+      <h1>Projects</h1>
+      <div class="theme-sw">
+        <button class="th-btn" data-mode="system" aria-label="System theme" aria-pressed="false" title="System">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+        </button>
+        <button class="th-btn" data-mode="light" aria-label="Light theme" aria-pressed="false" title="Light">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+        </button>
+        <button class="th-btn active" data-mode="dark" aria-label="Dark theme" aria-pressed="false" title="Dark">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="subtitle">Software, systems, and things I've built.</p>
+    <p class="bio">A collection of my work in Java, Python, and web development. Each project includes the problem, implementation, and skills practised along the way.</p>
+    <ol class="projects-page-list">
+      <li class="project-entry">
+        <p class="project-kind">Distributed systems</p>
+        <h2><a href="projects/smart-waste-collection-network.html">Smart Waste Collection Network <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A Java simulation of municipal waste collection, with three independently hosted services communicating over gRPC.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>Java</li><li>gRPC</li><li>Protocol Buffers</li><li>Service discovery</li><li>Distributed systems</li></ul>
+        <div class="project-links"><a href="projects/smart-waste-collection-network.html">About this project</a><a href="https://github.com/veckdev/smart-waste-collection-network" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Financial tools</p>
+        <h2><a href="projects/tax-calculator.html">Irish PAYE Calculator <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A web app and CLI for exploring Irish tax allocations across multiple jobs and estimating a year-end refund or underpayment.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>Python</li><li>Flask</li><li>Unit testing</li><li>Input validation</li><li>Separation of concerns</li></ul>
+        <div class="project-links"><a href="projects/tax-calculator.html">About this project</a><a href="https://github.com/veckdev/tax-calculator" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Team project</p>
+        <h2><a href="projects/avocado-bean.html">Avocado Bean <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A team-built website for a fictional plant-based ingredient delivery service, with recipe browsing and interactive order forms.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>JavaScript</li><li>Responsive design</li><li>Form validation</li><li>DOM manipulation</li><li>Teamwork</li></ul>
+        <div class="project-links"><a href="projects/avocado-bean.html">About this project</a><a href="https://github.com/veckdev/avocado-bean" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Python application</p>
+        <h2><a href="projects/student-grade-tracker.html">Student Grade Tracker <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A command-line tool for recording student grades, calculating averages, and generating reports.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>Python</li><li>pytest</li><li>JSON persistence</li><li>Modular design</li></ul>
+        <div class="project-links"><a href="projects/student-grade-tracker.html">About this project</a><a href="https://github.com/veckdev/student-grade-tracker" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Java application</p>
+        <h2><a href="projects/cinema-oop.html">Cinema Booking <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A terminal-based booking system with seat reservations, pricing rules, cancellation, and purchase history.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>Java</li><li>OOP</li><li>File persistence</li><li>State management</li><li>Validation</li></ul>
+        <div class="project-links"><a href="projects/cinema-oop.html">About this project</a><a href="https://github.com/veckdev/cinema-oop" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Java fundamentals</p>
+        <h2><a href="projects/library-system.html">Library System <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A Java CLI to add, find, list, and borrow books, with validation around borrowing.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>Java</li><li>Encapsulation</li><li>Collections</li><li>Layered design</li></ul>
+        <div class="project-links"><a href="projects/library-system.html">About this project</a><a href="https://github.com/veckdev/library-system" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Web development</p>
+        <h2><a href="projects/andre-esperidiao.html">André Esperidião — Portfolio <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A photography portfolio with a project gallery, individual project pages, and a contact page.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>HTML &amp; CSS</li><li>JavaScript</li><li>Content modelling</li><li>Multi-page navigation</li></ul>
+        <div class="project-links"><a href="projects/andre-esperidiao.html">About this project</a><a href="https://github.com/veckdev/andre-esperidiao" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Web development</p>
+        <h2><a href="projects/adventuregear-website.html">AdventureGear <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A responsive three-page site for a fictional outdoor brand, with product filters and a gear checklist.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>JavaScript</li><li>Bootstrap</li><li>jQuery</li><li>Responsive design</li><li>Form validation</li></ul>
+        <div class="project-links"><a href="projects/adventuregear-website.html">About this project</a><a href="https://github.com/veckdev/adventuregear-website" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">JavaScript fundamentals</p>
+        <h2><a href="projects/todo-app.html">To-Do App <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">A task manager with completion filters and persistent browser storage, built without a framework.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>JavaScript</li><li>DOM manipulation</li><li>State management</li><li>localStorage</li></ul>
+        <div class="project-links"><a href="projects/todo-app.html">About this project</a><a href="https://github.com/veckdev/todo-app" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+      <li class="project-entry">
+        <p class="project-kind">Web development</p>
+        <h2><a href="projects/portfolio-site.html">Personal Portfolio <span aria-hidden="true">→</span></a></h2>
+        <p class="project-description">This website: a minimal introduction and a collection of projects, built with HTML, CSS, and JavaScript.</p>
+        <ul class="skill-tags" aria-label="Skills practised"><li>Semantic HTML</li><li>CSS</li><li>JavaScript</li><li>Theme switching</li><li>Accessibility</li></ul>
+        <div class="project-links"><a href="projects/portfolio-site.html">About this project</a><a href="https://github.com/veckdev/portfolio-site" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </li>
+    </ol>
+    <p class="profile-note">Also on GitHub: <a href="https://github.com/veckdev/veckdev" target="_blank" rel="noopener">my profile README ↗</a>.</p>
+
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-left">
+        <span class="foot-icon">
+          <svg viewBox="0 0 24 24">
+            <polyline points="1 4 1 10 7 10" />
+            <path d="M3.51 15a9 9 0 1 0 .49-4.5" />
+          </svg>
+        </span>
+        <a href="https://github.com/veckdev" class="foot-link">github.com/veckdev</a>
+      </div>
+      <span class="foot-year" id="foot-year"></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
