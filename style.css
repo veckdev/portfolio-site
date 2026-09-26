@@ -134,8 +134,8 @@ h1 {
 }
 
 .th-btn svg {
-  width: 13px;
-  height: 13px;
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.6;
@@ -266,7 +266,6 @@ a:focus-visible, button:focus-visible {
 }
 .skip-link { position: absolute; top: -100px; padding: 8px; background: var(--bg); }
 .skip-link:focus { top: 12px; }
-.explore-link { margin-top: 32px; }
 .projects-page-list { list-style: none; margin-top: 48px; }
 .project-entry { padding: 44px 0 48px; border-top: 1px solid var(--border); }
 .project-kind { color: var(--muted); font-size: 12px; margin-bottom: 5px; }
@@ -315,4 +314,14 @@ code, kbd, samp, pre {
   color: var(--muted);
   margin-left: 2px;
   text-decoration: none;
+}
+
+/* Keep internal navigation readable and social profiles visually separate. */
+nav { align-items: center; }
+.social-links { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.social-link { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+.social-link svg { width: 16px; height: 16px; fill: currentColor; }
+@media (pointer: coarse) {
+  .social-link { width: 44px; height: 44px; }
+  .th-btn { min-width: 32px; min-height: 36px; }
 }
