@@ -1,28 +1,33 @@
 const html = document.documentElement;
-let mode = 'dark';
-try { mode = localStorage.getItem('veck-theme') || 'dark'; } catch {}
-if (!['system', 'light', 'dark'].includes(mode)) mode = 'dark';
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+const mobileViewport = window.matchMedia('(max-width: 600px)');
+let mode = 'system';
+try {
+  const saved = localStorage.getItem('veck-theme');
+  if (['system', 'light', 'dark'].includes(saved)) mode = saved;
+} catch { /* System preference remains available without storage. */ }
 
-function apply(m) {
-  mode = m;
-  try { localStorage.setItem('veck-theme', m); } catch {}
-  const resolved = m === 'system'
-    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-    : m;
-  html.setAttribute('data-theme', resolved);
-  document.querySelectorAll('.th-btn').forEach(b => {
-    const selected = b.dataset.mode === m;
-    b.classList.toggle('active', selected);
-    b.setAttribute('aria-pressed', String(selected));
-  });
+function applyTheme() {
+  const followSystem = mobileViewport.matches || mode === 'system';
+  const resolved = followSystem ? (systemTheme.matches ? 'dark' : 'light') : mode;
+  html.dataset.theme = resolved;
+  const button = document.querySelector('.theme-toggle');
+  if (button) {
+    const label = `Switch to ${resolved === 'dark' ? 'light' : 'dark'} theme`;
+    button.setAttribute('aria-label', label);
+    button.title = label;
+  }
 }
 
-document.querySelectorAll('.th-btn').forEach(b =>
-  b.addEventListener('click', () => apply(b.dataset.mode))
-);
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-  if (mode === 'system') apply('system');
+// The shared footer is loaded with defer; wire its button after parsing finishes.
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+    mode = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('veck-theme', mode); } catch {}
+    applyTheme();
+  });
+  applyTheme();
 });
-
-apply(mode);
+systemTheme.addEventListener('change', applyTheme);
+mobileViewport.addEventListener('change', applyTheme);
+applyTheme();

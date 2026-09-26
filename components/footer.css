@@ -20,18 +20,25 @@
   gap: 16px;
 }
 
-/* The signature, its bytes, and the year inherit identical text styles. */
-[data-site-footer] span {
-  font: inherit;
+/* A single unboxed control; both icons are decorative. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: -10px;
+  border: 0;
+  background: transparent;
   color: inherit;
-  letter-spacing: normal;
+  cursor: pointer;
 }
-
-.site-footer-signature {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 10px;
-}
+.theme-toggle:hover { color: var(--text); }
+.theme-toggle:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.theme-toggle span { display: flex; }
+.theme-toggle svg { width: 16px; height: 16px; stroke-width: 1.6; }
+[data-theme="dark"] .theme-icon-moon,
+[data-theme="light"] .theme-icon-sun { display: none; }
 
 .site-footer-year { flex-shrink: 0; }
 

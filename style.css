@@ -98,51 +98,6 @@ h1 {
   color: var(--text);
 }
 
-/* THEME SWITCHER */
-.theme-sw {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
-  padding: var(--sp-3);
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.th-btn {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--r1);
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  transition: background 0.1s, color 0.1s;
-}
-
-.th-btn:hover {
-  color: var(--text);
-}
-
-.th-btn.active {
-  background: var(--border);
-  color: var(--text);
-}
-
-.th-btn svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
 /* SUBTITLE */
 .subtitle {
   font-size: 15px;
@@ -259,7 +214,6 @@ h1 {
 
 nav { flex-wrap: wrap; row-gap: 16px; }
 .header-row { gap: 20px; }
-.theme-sw { flex-shrink: 0; }
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 5px;
@@ -323,5 +277,4 @@ nav { align-items: center; }
 .social-link svg { width: 16px; height: 16px; fill: currentColor; }
 @media (pointer: coarse) {
   .social-link { width: 44px; height: 44px; }
-  .th-btn { min-width: 32px; min-height: 36px; }
 }
