@@ -35,9 +35,8 @@
 
 .site-footer-year { flex-shrink: 0; }
 
-@media (max-width: 480px) {
-  .site-footer-signature {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
+@media (max-width: 600px) {
+  [data-site-footer] {
+    display: none;
   }
 }
