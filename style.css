@@ -325,8 +325,8 @@ a:focus-visible, button:focus-visible {
 .skip-link { position: absolute; top: -100px; padding: 8px; background: var(--bg); }
 .skip-link:focus { top: 12px; }
 .explore-link { margin-top: 32px; }
-.projects-page-list { list-style: none; margin-top: 36px; }
-.project-entry { padding: 26px 0 28px; border-top: 1px solid var(--border); }
+.projects-page-list { list-style: none; margin-top: 48px; }
+.project-entry { padding: 44px 0 48px; border-top: 1px solid var(--border); }
 .project-kind { color: var(--muted); font-size: 12px; margin-bottom: 5px; }
 .project-entry h2 { font-size: 17px; font-weight: 500; line-height: 1.5; }
 .project-entry h2 a { color: var(--text); text-decoration: none; }
