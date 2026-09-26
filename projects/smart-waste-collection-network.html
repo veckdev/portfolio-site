@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Waste Collection Network — Victor da Silva</title>
-  <meta name="description" content="A Java simulation of municipal waste collection, with three independently hosted services communicating over gRPC." />
+  <meta name="description" content="A university project simulating a smart waste collection network. Three Java services coordinate bins, collection routes, and recycling centres through gRPC." />
   <link rel="stylesheet" href="../style.css" />
 </head>
 
@@ -50,12 +50,12 @@
       </div>
     </div>
 
-    <p class="subtitle">Distributed systems</p>
-    <p class="bio">A Java simulation of municipal waste collection, with three independently hosted services communicating over gRPC.</p>
+    <p class="subtitle">Academic project · Distributed systems</p>
+    <p class="bio">A university project simulating a smart waste collection network. Three Java services coordinate bins, collection routes, and recycling centres through gRPC.</p>
     <ul class="skill-tags" aria-label="Skills practised"><li>Java</li><li>gRPC</li><li>Protocol Buffers</li><li>Service discovery</li><li>Distributed systems</li></ul>
-    <section class="project-section"><h2>The problem</h2><p>Coordinate smart bins, collection vehicles, and recycling centres through separate services.</p></section>
-    <section class="project-section"><h2>The implementation</h2><p>The system uses unary and streaming RPCs, jmDNS discovery, request metadata, and deadlines. A Swing client displays service availability.</p></section>
-    <section class="project-section"><h2>Skills in practice</h2><p>Explore service boundaries, communication patterns, and how a client behaves when a service is unavailable.</p></section>
+    <section class="project-section"><h2>The problem</h2><p>Model how independently running services can coordinate municipal waste collection, from monitoring bin levels to assigning collections and receiving deliveries at recycling centres.</p></section>
+    <section class="project-section"><h2>The implementation</h2><p>The application separates Smart Bin, Collection, and Recycling Centre services. Protocol Buffers define their contracts, gRPC supports unary and streaming communication, and jmDNS handles service discovery. Requests carry metadata and deadlines; a Swing client shows which services are available.</p></section>
+    <section class="project-section"><h2>Skills in practice</h2><p>This project put distributed systems concepts into practice: defining service contracts, choosing communication patterns, coordinating services, and representing partial availability in a client.</p></section>
     <div class="project-links detail-links"><a href="https://github.com/veckdev/smart-waste-collection-network" target="_blank" rel="noopener">View repository ↗</a></div>
     
     <p class="back-link"><a href="../projects.html">← All projects</a></p>
