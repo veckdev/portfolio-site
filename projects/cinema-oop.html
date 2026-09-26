@@ -7,6 +7,8 @@
   <title>Cinema Booking — Victor da Silva</title>
   <meta name="description" content="A personal Java booking application that models seat availability, age-based ticket prices, cancellations, and purchase history in a command-line interface." />
   <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../components/footer.css?v=1" />
+  <script src="../components/footer.js?v=1" defer></script>
 </head>
 
 <body>
@@ -21,7 +23,7 @@
     </nav>
 
     <div class="header-row">
-      <h1>Cinema Booking</h1>
+      <h1>Cinema Booking <sup class="commit-count" title="1 commits on the default branch" aria-label="1 commits on the default branch">1</sup></h1>
       <div class="theme-sw">
         <button class="th-btn" data-mode="system" aria-label="System theme" aria-pressed="false" title="System">
           <svg viewBox="0 0 24 24">
@@ -62,12 +64,7 @@
 
   </main>
 
-  <footer>
-    <div class="foot-inner">
-      <div class="binary-signature" role="img" aria-label="victor in binary" title="victor"><span aria-hidden="true">01110110</span><span aria-hidden="true">01101001</span><span aria-hidden="true">01100011</span><span aria-hidden="true">01110100</span><span aria-hidden="true">01101111</span><span aria-hidden="true">01110010</span></div>
-      <span class="foot-year" id="foot-year"></span>
-    </div>
-  </footer>
+  <footer data-site-footer aria-label="Site footer"></footer>
 
   <script src="../script.js"></script>
 </body>

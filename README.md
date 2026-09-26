@@ -22,3 +22,13 @@ Open http://localhost:8080. No build step or dependencies are required.
 The catalogue is a curated snapshot of the public repositories at https://github.com/veckdev, reviewed on 25 September 2026. It does not call the GitHub API at runtime. When adding a project, update `projects.html` and add its detail page in `projects/`, keeping descriptions and skills grounded in the repository. The `veckdev` repository is linked separately as the profile README.
 
 Keep the narrow layout, typography, and theme controls consistent across pages. Verify relative links from the nested detail pages and check both desktop and mobile layouts before publishing.
+
+## Commit counts
+
+Project titles show a snapshot of the total commits on each repository's default branch (all contributors). Refresh before publishing with:
+
+```sh
+python3 scripts/update-commit-counts.py
+```
+
+The script queries the public GitHub API and updates the catalogue and detail pages. Counts remain visible without runtime API calls; they do not update automatically when a repository changes.
